@@ -1,0 +1,63 @@
+package cn.ssx.Test;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import cn.ssx.Class.SaleRecord;
+import cn.ssx.DAO.SaleRecord_interface;
+import cn.ssx.Impl.SaleRecord_DAO_Impl;
+
+/**
+ * Servlet implementation class XiaoshoujiluServlet
+ */
+@WebServlet("/XiaoshoujiluServlet")
+public class XiaoshoujiluServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public XiaoshoujiluServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		 response.setContentType("text/html; charset=utf-8");
+	     request.setCharacterEncoding("utf-8");
+		  PrintWriter out = response.getWriter();
+		  request.setCharacterEncoding("utf-8");
+		  SaleRecord_interface dao = new SaleRecord_DAO_Impl();
+		  HttpSession session = request.getSession();
+		  response.setContentType("text/html; charset=utf-8");
+		 try {
+			List<SaleRecord> list = dao.SaleRecord_Findall();
+			response.setContentType("text/html; charset=utf-8");
+			session.setAttribute("Xiaoshoulist", list);
+			response.setHeader("Refresh", "0; http://localhost:8080/Second/Xiaoshoujilu.jsp" );
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

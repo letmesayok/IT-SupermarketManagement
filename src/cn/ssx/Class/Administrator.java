@@ -6,17 +6,12 @@ public class Administrator {
 	public String getAdministrator_name() {
 		return Administrator_name;
 	}
-	public void setAdministrator_name(String administrator_name) {
+	public void setAdministrator_name(String administrator_name) {//set adminstrator name
 		Administrator_name = administrator_name;
 	}
-	public String getAdministrator_password() {
-		return Administrator_password;
-	}
-	public void setAdministrator_password(String administrator_password) {
+	
+	public void setAdministrator_password(String administrator_password) {//set adminstrator's password
 		Administrator_password = administrator_password;
-	}
-	public Administrator() {
-		super();
 	}
 	
 	
